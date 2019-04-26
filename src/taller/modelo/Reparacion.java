@@ -16,19 +16,19 @@ public class Reparacion {
     private Aparato aparato;
     private Servicio servicio;
     private LocalDate fechaReparacion;
-    private String estado;
+    private boolean estado;
 
     public Reparacion() {
     }
 
-    public Reparacion(Aparato aparato, Servicio servicio, LocalDate fechaReparacion, String estado) {
+    public Reparacion(Aparato aparato, Servicio servicio, LocalDate fechaReparacion, boolean estado) {
         this.aparato = aparato;
         this.servicio = servicio;
         this.fechaReparacion = fechaReparacion;
         this.estado = estado;
     }
 
-    public Reparacion(int idReparacion, Aparato aparato, Servicio servicio, LocalDate fechaReparacion, String estado) {
+    public Reparacion(int idReparacion, Aparato aparato, Servicio servicio, LocalDate fechaReparacion, boolean estado) {
         this.idReparacion = idReparacion;
         this.aparato = aparato;
         this.servicio = servicio;
@@ -68,11 +68,11 @@ public class Reparacion {
         this.fechaReparacion = fechaReparacion;
     }
 
-    public String getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
     

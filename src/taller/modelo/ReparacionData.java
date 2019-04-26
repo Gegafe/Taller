@@ -37,7 +37,7 @@ public class ReparacionData {
             ps.setInt(1, rep.getAparato().getIdAparato());
             ps.setInt(2, rep.getServicio().getIdServicio());
             ps.setDate(3, Date.valueOf(rep.getFechaReparacion()));
-            ps.setString(4, rep.getEstado());
+            ps.setBoolean(4, rep.getEstado());
             
             ps.executeUpdate();
             
@@ -77,7 +77,7 @@ public class ReparacionData {
             ps.setInt(1, rep.getAparato().getIdAparato());
             ps.setInt(2, rep.getServicio().getIdServicio());
             ps.setDate(3, Date.valueOf(rep.getFechaReparacion()));
-            ps.setString(4, rep.getEstado());
+            ps.setBoolean(4, rep.getEstado());
             ps.setInt(5 , rep.getIdReparacion());
             
             ps.executeUpdate();
@@ -109,7 +109,7 @@ public class ReparacionData {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 rep.setAparato(obtenerAparato(rs.getInt("IdAparato")));
-                rep.setEstado(rs.getString("Estado"));
+                rep.setEstado(rs.getBoolean("Estado"));
                 rep.setFechaReparacion(rs.getDate("FechaReparacion").toLocalDate());
                 rep.setIdReparacion(rs.getInt("IdReparacion"));
                 rep.setServicio(obtenerServicio(rs.getInt("IdServicio")));
@@ -135,7 +135,7 @@ public class ReparacionData {
             while (rs.next()) {                
                 r = new Reparacion();
                 r.setAparato(obtenerAparato(rs.getInt("IdAparato")));
-                r.setEstado(rs.getString("Estado"));
+                r.setEstado(rs.getBoolean("Estado"));
                 r.setFechaReparacion(rs.getDate("FechaReparacion").toLocalDate());
                 r.setIdReparacion(rs.getInt("IdReparacion"));
                 r.setServicio(obtenerServicio(rs.getInt("IdServicio")));

@@ -159,7 +159,7 @@ public class AparatoData {
         listaReparacion = rd.obtenerListaDeReparacion();
         
         for (Reparacion reparacion : listaReparacion) {
-            if (reparacion.getEstado().equals("Resuelto")) {
+            if (reparacion.getEstado()) {
                 listaAparato.add(reparacion.getAparato());
             }
         }
@@ -174,7 +174,7 @@ public class AparatoData {
         listaReparacion = rd.obtenerListaDeReparacion();
         
         for (Reparacion reparacion : listaReparacion) {
-            if (reparacion.getEstado().equals("Pendiente")) {
+            if (!reparacion.getEstado()) {
                 listaAparato.add(reparacion.getAparato());
             }
         }
