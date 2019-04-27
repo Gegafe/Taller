@@ -5,10 +5,8 @@
  */
 package taller;
 
-import java.time.LocalDate;
-import java.util.List;
-import taller.modelo.*;
-
+import taller.vista.Principal;
+import javax.swing.JFrame;
 
 /**
  *
@@ -21,17 +19,12 @@ public class Taller {
      */
     public static void main(String[] args) throws ClassNotFoundException {
         // TODO code application logic here
-        Conexion co = new Conexion();
-                
-        AparatoData ad = new AparatoData(co);
-        List<Aparato> a = ad.obtenerAparatosXDuenio(2);
+        Principal v = new Principal();
+        v.setTitle("Taller de Reparación");
+        v.setVisible(true);
+        v.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        v.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        for (Aparato aparato : a) {
-            System.out.println("Aparato id: "+ aparato.getIdAparato());
-            System.out.println(aparato.getDuenio().getNombre());
-            System.out.println(aparato.getNroSerie());
-            System.out.println("--------------------------- ");
-        }
         
     }
     
