@@ -5,6 +5,12 @@
  */
 package taller.vista;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import taller.modelo.Cliente;
+import taller.modelo.ClienteData;
+import taller.modelo.Conexion;
+
 /**
  *
  * @author User
@@ -61,14 +67,39 @@ public class ClienteView extends javax.swing.JInternalFrame {
         jLabel5.setText("Teléfono:");
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 51, 153));
@@ -154,6 +185,88 @@ public class ClienteView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        String nombre = txNombre.getText();
+        String dni = txDni.getText();
+        String domicilio = txDomicilio.getText();
+        String telefono = txTelefono.getText();
+        
+        Cliente cliente = new Cliente(nombre, dni, domicilio, telefono);
+        
+        try {
+            Conexion con = new Conexion();
+            ClienteData cd = new ClienteData(con);
+            cd.altaCliente(cliente);
+            txId.setText(cliente.getIdCliente() + "");
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        int id = Integer.parseInt(txId.getText());
+        String nombre = txNombre.getText();
+        String dni = txDni.getText();
+        String domicilio = txDomicilio.getText();
+        String telefono = txTelefono.getText();
+        
+        Cliente cliente = new Cliente(id, nombre, dni, domicilio, telefono);
+        
+        try {
+            Conexion con = new Conexion();
+            ClienteData cd = new ClienteData(con);
+            cd.modificarCliente(cliente);
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        int id = Integer.parseInt(txId.getText());
+        Cliente cliente;
+        
+        try {
+            Conexion con = new Conexion();
+            ClienteData cd = new ClienteData(con);
+            cliente = cd.obtenerCliente(id);
+            
+            txId.setText(cliente.getIdCliente() + "");
+            txNombre.setText(cliente.getNombre());
+            txDni.setText(cliente.getDni());
+            txDomicilio.setText(cliente.getDomicilio());
+            txTelefono.setText(cliente.getTelefono());
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int id = Integer.parseInt(txId.getText());
+        
+        try {
+            Conexion con = new Conexion();
+            ClienteData cd = new ClienteData(con);
+            cd.bajaCliente(id);
+            
+            btnLimpiarActionPerformed(evt);
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txId.setText("");
+        txNombre.setText("");
+        txDni.setText("");
+        txDomicilio.setText("");
+        txTelefono.setText("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
