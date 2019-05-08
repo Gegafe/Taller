@@ -12,7 +12,7 @@ package taller.modelo;
 public class Servicio {
     private int idServicio;
     private String codigo;
-    private String Descripcion;
+    private String descripcion;
     private double costo;
 
     public Servicio() {
@@ -20,14 +20,14 @@ public class Servicio {
 
     public Servicio(String codigo, String Descripcion, double costo) {
         this.codigo = codigo;
-        this.Descripcion = Descripcion;
+        this.descripcion = Descripcion;
         this.costo = costo;
     }
 
     public Servicio(int idServicio, String codigo, String Descripcion, double costo) {
         this.idServicio = idServicio;
         this.codigo = codigo;
-        this.Descripcion = Descripcion;
+        this.descripcion = Descripcion;
         this.costo = costo;
     }
 
@@ -48,11 +48,11 @@ public class Servicio {
     }
 
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
 
     public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
+        this.descripcion = Descripcion;
     }
 
     public double getCosto() {
@@ -63,6 +63,8 @@ public class Servicio {
         this.costo = costo;
     }
     
-    
+    public String toString(){
+        return idServicio + " - " + codigo + " - " + descripcion;
+    }
     
 }

@@ -89,6 +89,8 @@ public class Aparato {
         this.fEgreso = fEgreso;
     }
     
-    
+    public String toString(){
+        return idAparato + " - " + tipoAparato;
+    }
     
 }

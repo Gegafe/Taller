@@ -83,6 +83,11 @@ public class Principal extends javax.swing.JFrame {
         menuAparatos.setText("Aparatos");
 
         subMenuFormAparatos.setText("Formulario de Aparatos");
+        subMenuFormAparatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuFormAparatosActionPerformed(evt);
+            }
+        });
         menuAparatos.add(subMenuFormAparatos);
 
         jMenuBar1.add(menuAparatos);
@@ -131,6 +136,15 @@ public class Principal extends javax.swing.JFrame {
         escritorio.moveToFront(vCliente);
         
     }//GEN-LAST:event_subMenuFormClientesActionPerformed
+
+    private void subMenuFormAparatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuFormAparatosActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        AparatoView vAparato = new AparatoView();
+        vAparato.setVisible(true);
+        escritorio.add(vAparato);
+        escritorio.moveToFront(vAparato);
+    }//GEN-LAST:event_subMenuFormAparatosActionPerformed
 
     /**
      * @param args the command line arguments
