@@ -285,6 +285,9 @@ public class ReparacionView extends javax.swing.JInternalFrame {
             ReparacionData rd = new ReparacionData(con);
             Reparacion rep = rd.obtenerReparacion(id);
             
+            btnLimpiarActionPerformed(evt);
+            
+            txId.setText(String.valueOf(id));
             SeleccionarIndiceComboAparato(rep.getAparato().getIdAparato());
             SeleccionarIndiceComboServicio(rep.getServicio().getIdServicio());
             
@@ -344,7 +347,9 @@ public class ReparacionView extends javax.swing.JInternalFrame {
             
             Conexion con = new Conexion();
             ReparacionData rd = new ReparacionData(con);
-            rd.bajaReparacion(id);
+            rd.bajaReparacion(id);                                                                                                                                                                                                                                                                                                                                                                             rd.bajaReparacion(id);
+            
+            btnLimpiarActionPerformed(evt);
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ReparacionView.class.getName()).log(Level.SEVERE, null, ex);

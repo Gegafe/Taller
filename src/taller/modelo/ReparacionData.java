@@ -59,7 +59,7 @@ public class ReparacionData {
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(0, idReparacion);
+            ps.setInt(1, idReparacion);
             
             ps.executeUpdate();
             ps.close();
