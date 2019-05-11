@@ -95,6 +95,11 @@ public class Principal extends javax.swing.JFrame {
         menuServicios.setText("Servicios");
 
         subMenuFormServicios.setText("Formulario de Servicios");
+        subMenuFormServicios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuFormServiciosActionPerformed(evt);
+            }
+        });
         menuServicios.add(subMenuFormServicios);
 
         jMenuBar1.add(menuServicios);
@@ -102,6 +107,11 @@ public class Principal extends javax.swing.JFrame {
         menuReparacion.setText("Reparación");
 
         subMenuFormReparacion.setText("Formulario de Reparaciones");
+        subMenuFormReparacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuFormReparacionActionPerformed(evt);
+            }
+        });
         menuReparacion.add(subMenuFormReparacion);
 
         jMenuBar1.add(menuReparacion);
@@ -145,6 +155,19 @@ public class Principal extends javax.swing.JFrame {
         escritorio.add(vAparato);
         escritorio.moveToFront(vAparato);
     }//GEN-LAST:event_subMenuFormAparatosActionPerformed
+
+    private void subMenuFormServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuFormServiciosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subMenuFormServiciosActionPerformed
+
+    private void subMenuFormReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuFormReparacionActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ReparacionView vReparacion = new ReparacionView();
+        vReparacion.setVisible(true);
+        escritorio.add(vReparacion);
+        escritorio.moveToFront(vReparacion);
+    }//GEN-LAST:event_subMenuFormReparacionActionPerformed
 
     /**
      * @param args the command line arguments

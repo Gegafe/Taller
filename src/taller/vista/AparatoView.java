@@ -208,16 +208,16 @@ public class AparatoView extends javax.swing.JInternalFrame {
     private ArrayList<Cliente> ObtenerListaClientes(){
         ClienteData cd;
         Conexion con;
-        ArrayList<Cliente> cliente = new ArrayList<>();
+        ArrayList<Cliente> clientes = new ArrayList<>();
         try {
             con = new Conexion();
             cd = new ClienteData(con);
-            cliente = (ArrayList)cd.obtenerListaDeClientes();
+            clientes = (ArrayList)cd.obtenerListaDeClientes();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AparatoView.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return cliente;
+        return clientes;
     } 
     
     private void CargaComboCliente(){

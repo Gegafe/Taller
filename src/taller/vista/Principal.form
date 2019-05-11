@@ -61,6 +61,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Formulario de Servicios"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="subMenuFormServiciosActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -73,6 +76,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Formulario de Reparaciones"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="subMenuFormReparacionActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
