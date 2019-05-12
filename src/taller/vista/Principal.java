@@ -35,6 +35,7 @@ public class Principal extends javax.swing.JFrame {
         subMenuFormClientes = new javax.swing.JMenuItem();
         menuAparatos = new javax.swing.JMenu();
         subMenuFormAparatos = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         menuServicios = new javax.swing.JMenu();
         subMenuFormServicios = new javax.swing.JMenuItem();
         menuReparacion = new javax.swing.JMenu();
@@ -89,6 +90,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         menuAparatos.add(subMenuFormAparatos);
+
+        jMenuItem1.setText("Búsqueda de Aparatos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuAparatos.add(jMenuItem1);
 
         jMenuBar1.add(menuAparatos);
 
@@ -157,7 +166,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_subMenuFormAparatosActionPerformed
 
     private void subMenuFormServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuFormServiciosActionPerformed
-        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ServicioView vServicio = new ServicioView();
+        vServicio.setVisible(true);
+        escritorio.add(vServicio);
+        escritorio.moveToFront(vServicio);
     }//GEN-LAST:event_subMenuFormServiciosActionPerformed
 
     private void subMenuFormReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuFormReparacionActionPerformed
@@ -168,6 +182,15 @@ public class Principal extends javax.swing.JFrame {
         escritorio.add(vReparacion);
         escritorio.moveToFront(vReparacion);
     }//GEN-LAST:event_subMenuFormReparacionActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        BusquedaAparatoView ba = new BusquedaAparatoView();
+        ba.setVisible(true);
+        escritorio.add(ba);
+        escritorio.moveToFront(ba);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,6 +230,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuAparatos;
     private javax.swing.JMenu menuArchivo;
     private javax.swing.JMenu menuClientes;

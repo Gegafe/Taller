@@ -11,7 +11,6 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
 import taller.modelo.Aparato;
 import taller.modelo.AparatoData;
 import taller.modelo.Conexion;
