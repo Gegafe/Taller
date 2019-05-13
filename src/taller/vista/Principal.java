@@ -35,11 +35,12 @@ public class Principal extends javax.swing.JFrame {
         subMenuFormClientes = new javax.swing.JMenuItem();
         menuAparatos = new javax.swing.JMenu();
         subMenuFormAparatos = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
         menuServicios = new javax.swing.JMenu();
         subMenuFormServicios = new javax.swing.JMenuItem();
         menuReparacion = new javax.swing.JMenu();
         subMenuFormReparacion = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,14 +92,6 @@ public class Principal extends javax.swing.JFrame {
         });
         menuAparatos.add(subMenuFormAparatos);
 
-        jMenuItem1.setText("Búsqueda de Aparatos");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        menuAparatos.add(jMenuItem1);
-
         jMenuBar1.add(menuAparatos);
 
         menuServicios.setText("Servicios");
@@ -124,6 +117,18 @@ public class Principal extends javax.swing.JFrame {
         menuReparacion.add(subMenuFormReparacion);
 
         jMenuBar1.add(menuReparacion);
+
+        jMenu1.setText("Búsquedas");
+
+        jMenuItem1.setText("Buscar Aparatos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -186,7 +191,7 @@ public class Principal extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        BusquedaAparatoView ba = new BusquedaAparatoView();
+        BusquedaAparatosView ba = new BusquedaAparatosView();
         ba.setVisible(true);
         escritorio.add(ba);
         escritorio.moveToFront(ba);
@@ -229,6 +234,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuAparatos;
