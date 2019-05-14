@@ -128,7 +128,7 @@ public class ReparacionView extends javax.swing.JInternalFrame {
         });
 
         txFecha.setColumns(10);
-        txFecha.setToolTipText("");
+        txFecha.setToolTipText("Ingrese fecha en formato dd/MM/yyyy");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

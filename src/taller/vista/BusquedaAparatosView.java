@@ -113,6 +113,8 @@ public class BusquedaAparatosView extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tAparato);
 
+        txFecha.setColumns(10);
+        txFecha.setToolTipText("Ingrese fecha en formato dd/MM/yyyy");
         txFecha.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,11 +132,11 @@ public class BusquedaAparatosView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbBuscar, 0, 280, Short.MAX_VALUE)
+                            .addComponent(cbBuscar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbServicio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(txFecha)
+                                .addComponent(txFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBuscar)))
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -236,6 +238,7 @@ public class BusquedaAparatosView extends javax.swing.JInternalFrame {
         cbCliente.setSelectedIndex(-1);
         cbServicio.setEnabled(false);
         cbServicio.setSelectedIndex(-1);
+        txFecha.setText("");
         txFecha.setEnabled(false);
         btnBuscar.setEnabled(false);
     }

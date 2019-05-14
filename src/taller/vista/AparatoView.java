@@ -124,7 +124,9 @@ public class AparatoView extends javax.swing.JInternalFrame {
             }
         });
 
-        txFechaIngreso.setToolTipText("");
+        txFechaIngreso.setToolTipText("Ingrese fecha en formato dd/MM/yyyy");
+
+        txFechaSalida.setToolTipText("Ingrese fecha en formato dd/MM/yyyy");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
