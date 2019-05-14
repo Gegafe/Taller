@@ -8,6 +8,7 @@ package taller.vista;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,10 +62,10 @@ public class AparatoView extends javax.swing.JInternalFrame {
         txId = new javax.swing.JTextField();
         txNroSerie = new javax.swing.JTextField();
         txTipoAparato = new javax.swing.JTextField();
-        dtFechaIngreso = new com.toedter.calendar.JDateChooser();
-        dtFechaSalida = new com.toedter.calendar.JDateChooser();
         btnBuscar = new javax.swing.JButton();
         cbCliente = new javax.swing.JComboBox<>();
+        txFechaIngreso = new javax.swing.JTextField();
+        txFechaSalida = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -123,6 +124,8 @@ public class AparatoView extends javax.swing.JInternalFrame {
             }
         });
 
+        txFechaIngreso.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,12 +145,10 @@ public class AparatoView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txNroSerie)
-                    .addComponent(dtFechaIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dtFechaSalida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txTipoAparato)
                     .addComponent(cbCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnActualizar)
                                 .addGap(18, 18, 18)
@@ -157,7 +158,9 @@ public class AparatoView extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(117, 117, 117)
-                                .addComponent(btnBuscar)))
+                                .addComponent(btnBuscar))
+                            .addComponent(txFechaIngreso)
+                            .addComponent(txFechaSalida))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -168,32 +171,31 @@ public class AparatoView extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel2)
-                                            .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnBuscar))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel3)
-                                            .addComponent(cbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel4))
-                                    .addComponent(txNroSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel5))
-                            .addComponent(txTipoAparato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBuscar))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(cbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4))
+                            .addComponent(txNroSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel6))
-                    .addComponent(dtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel5))
+                    .addComponent(txTipoAparato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(dtFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                    .addComponent(txFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(btnActualizar)
@@ -226,8 +228,9 @@ public class AparatoView extends javax.swing.JInternalFrame {
         }
     }
     
-    private LocalDate ConvierteFecha(java.util.Date fecha){
-        return fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    private LocalDate ConvierteFecha(String fecha){
+        DateTimeFormatter formaFecha = DateTimeFormatter.ofPattern("d/MM/yyyy");
+        return LocalDate.parse(fecha, formaFecha);
     }
     
     private int ObtenerClienteCombo(Cliente cliente){
@@ -256,8 +259,8 @@ public class AparatoView extends javax.swing.JInternalFrame {
             cbCliente.setSelectedIndex(ObtenerClienteCombo(aparato.getDuenio()));
             txNroSerie.setText(aparato.getNroSerie());
             txTipoAparato.setText(aparato.getTipoAparato());
-            dtFechaIngreso.setDate(Date.valueOf(aparato.getfIngreso()));
-            dtFechaSalida.setDate(Date.valueOf(aparato.getfEgreso()));
+            txFechaIngreso.setText(aparato.getfIngreso().toString());
+            txFechaSalida.setText(aparato.getfEgreso().toString());
             
             
         } catch (ClassNotFoundException ex) {
@@ -270,8 +273,8 @@ public class AparatoView extends javax.swing.JInternalFrame {
         cbCliente.setSelectedIndex(-1);
         txNroSerie.setText("");
         txTipoAparato.setText("");
-        dtFechaIngreso.setDate(null);
-        dtFechaSalida.setDate(null);
+        txFechaIngreso.setText(null);
+        txFechaSalida.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -279,8 +282,8 @@ public class AparatoView extends javax.swing.JInternalFrame {
             Cliente c = (Cliente)cbCliente.getSelectedItem();
             String nroSerie = txNroSerie.getText();
             String tipoAparato = txTipoAparato.getText();
-            LocalDate fecIngreso = ConvierteFecha(dtFechaIngreso.getDate());
-            LocalDate fecSalida = ConvierteFecha(dtFechaSalida.getDate());
+            LocalDate fecIngreso = ConvierteFecha(txFechaIngreso.getText());
+            LocalDate fecSalida = ConvierteFecha(txFechaSalida.getText());
             
             Aparato aparato = new Aparato(c, nroSerie, tipoAparato, fecIngreso, fecSalida);
             
@@ -302,8 +305,8 @@ public class AparatoView extends javax.swing.JInternalFrame {
             Cliente cliente = (Cliente) cbCliente.getSelectedItem();
             String nroSerie = txNroSerie.getText();
             String tipoAparato = txTipoAparato.getText();
-            LocalDate fecIngreso = ConvierteFecha(dtFechaIngreso.getDate());
-            LocalDate fecSalida = ConvierteFecha(dtFechaSalida.getDate());
+            LocalDate fecIngreso = ConvierteFecha(txFechaIngreso.getText());
+            LocalDate fecSalida = ConvierteFecha(txFechaSalida.getText());
             
             Aparato aparato = new Aparato(id, cliente, nroSerie, tipoAparato, fecIngreso, fecSalida);
             
@@ -342,8 +345,6 @@ public class AparatoView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JComboBox<Cliente> cbCliente;
-    private com.toedter.calendar.JDateChooser dtFechaIngreso;
-    private com.toedter.calendar.JDateChooser dtFechaSalida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -351,6 +352,8 @@ public class AparatoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JTextField txFechaIngreso;
+    private javax.swing.JTextField txFechaSalida;
     private javax.swing.JTextField txId;
     private javax.swing.JTextField txNroSerie;
     private javax.swing.JTextField txTipoAparato;

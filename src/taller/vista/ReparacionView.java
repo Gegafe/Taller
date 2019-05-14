@@ -8,6 +8,7 @@ package taller.vista;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -54,13 +55,13 @@ public class ReparacionView extends javax.swing.JInternalFrame {
         txId = new javax.swing.JTextField();
         cbAparato = new javax.swing.JComboBox<>();
         cbServicio = new javax.swing.JComboBox<>();
-        dtFechaReparacion = new com.toedter.calendar.JDateChooser();
         chkEstado = new javax.swing.JCheckBox();
         btnAgregar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+        txFecha = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -126,6 +127,9 @@ public class ReparacionView extends javax.swing.JInternalFrame {
             }
         });
 
+        txFecha.setColumns(10);
+        txFecha.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -143,15 +147,16 @@ public class ReparacionView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                                    .addComponent(btnBuscar))
-                                .addComponent(cbAparato, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbServicio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(dtFechaReparacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(chkEstado)))
+                            .addComponent(cbAparato, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbServicio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txFecha)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(chkEstado)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                                .addComponent(btnBuscar))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAgregar)
                         .addGap(18, 18, 18)
@@ -160,7 +165,7 @@ public class ReparacionView extends javax.swing.JInternalFrame {
                         .addComponent(btnEliminar)
                         .addGap(18, 18, 18)
                         .addComponent(btnLimpiar)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,29 +176,28 @@ public class ReparacionView extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel1)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel2))
-                                            .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel1)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel3))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnBuscar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cbAparato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jLabel2))
+                                    .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel4))
-                            .addComponent(cbServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnBuscar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbAparato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel5))
-                    .addComponent(dtFechaReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel4))
+                    .addComponent(cbServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(chkEstado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(btnActualizar)
@@ -255,15 +259,16 @@ public class ReparacionView extends javax.swing.JInternalFrame {
         cbServicio.setSelectedIndex(indice);
     }
     
-    private LocalDate ConvierteFecha(java.util.Date fecha){
-        return fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    private LocalDate ConvierteFecha(String fecha){
+        DateTimeFormatter formaFecha = DateTimeFormatter.ofPattern("d/MM/yyyy");
+        return LocalDate.parse(fecha, formaFecha);
     }
         
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         txId.setText("");
         cbAparato.setSelectedIndex(-1);
         cbServicio.setSelectedIndex(-1);
-        dtFechaReparacion.setDate(null);
+        txFecha.setText("");
         chkEstado.setText("Sin Reparar");
         chkEstado.setSelected(false);
     }//GEN-LAST:event_btnLimpiarActionPerformed
@@ -290,7 +295,7 @@ public class ReparacionView extends javax.swing.JInternalFrame {
             SeleccionarIndiceComboAparato(rep.getAparato().getIdAparato());
             SeleccionarIndiceComboServicio(rep.getServicio().getIdServicio());
             
-            dtFechaReparacion.setDate(Date.valueOf(rep.getFechaReparacion()));
+            txFecha.setText(rep.getFechaReparacion().toString());
             chkEstado.setSelected(rep.getEstado());
             if (rep.getEstado()) {
                 chkEstado.setText("Reparado");
@@ -307,7 +312,7 @@ public class ReparacionView extends javax.swing.JInternalFrame {
         try {
             Aparato ap = (Aparato) cbAparato.getSelectedItem();
             Servicio ser = (Servicio) cbServicio.getSelectedItem();
-            LocalDate fecReparacion = ConvierteFecha(dtFechaReparacion.getDate());
+            LocalDate fecReparacion = ConvierteFecha(txFecha.getText());
             boolean estado = chkEstado.isSelected();
             
             Reparacion rep = new Reparacion(ap, ser, fecReparacion, estado);
@@ -327,7 +332,7 @@ public class ReparacionView extends javax.swing.JInternalFrame {
             int id = Integer.parseInt(txId.getText());
             Aparato ap = (Aparato) cbAparato.getSelectedItem();
             Servicio ser = (Servicio) cbServicio.getSelectedItem();
-            LocalDate fecReparacion = ConvierteFecha(dtFechaReparacion.getDate());
+            LocalDate fecReparacion = ConvierteFecha(txFecha.getText());
             boolean estado = chkEstado.isSelected();
             
             Reparacion rep = new Reparacion(id, ap, ser, fecReparacion, estado);
@@ -367,13 +372,13 @@ public class ReparacionView extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Aparato> cbAparato;
     private javax.swing.JComboBox<Servicio> cbServicio;
     javax.swing.JCheckBox chkEstado;
-    private com.toedter.calendar.JDateChooser dtFechaReparacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField txFecha;
     private javax.swing.JTextField txId;
     // End of variables declaration//GEN-END:variables
 // </editor-fold> 
