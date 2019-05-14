@@ -259,8 +259,8 @@ public class AparatoView extends javax.swing.JInternalFrame {
             cbCliente.setSelectedIndex(ObtenerClienteCombo(aparato.getDuenio()));
             txNroSerie.setText(aparato.getNroSerie());
             txTipoAparato.setText(aparato.getTipoAparato());
-            txFechaIngreso.setText(aparato.getfIngreso().toString());
-            txFechaSalida.setText(aparato.getfEgreso().toString());
+            txFechaIngreso.setText(aparato.getfIngreso().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            txFechaSalida.setText(aparato.getfEgreso().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             
             
         } catch (ClassNotFoundException ex) {

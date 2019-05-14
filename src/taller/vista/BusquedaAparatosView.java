@@ -227,7 +227,7 @@ public class BusquedaAparatosView extends javax.swing.JInternalFrame {
         BorrarFilasTabla();
         
         for (Aparato ap : listaAparatos) {
-            modelo.addRow(new Object[]{ap.getIdAparato(), ap.getTipoAparato(), ap.getNroSerie(), ap.getfIngreso()});
+            modelo.addRow(new Object[]{ap.getIdAparato(), ap.getTipoAparato(), ap.getNroSerie(), ap.getfIngreso().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))});
         }
     }
     
@@ -305,7 +305,7 @@ public class BusquedaAparatosView extends javax.swing.JInternalFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         try {
             BorrarFilasTabla();
-            if (txFecha.getText() != null) {
+            if (!txFecha.getText().equals("")) {
                 Conexion con = new Conexion();
                 LocalDate fIngreso = ConvierteFecha(txFecha.getText());
                 AparatoData ad = new AparatoData(con);

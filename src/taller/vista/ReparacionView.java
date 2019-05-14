@@ -295,7 +295,7 @@ public class ReparacionView extends javax.swing.JInternalFrame {
             SeleccionarIndiceComboAparato(rep.getAparato().getIdAparato());
             SeleccionarIndiceComboServicio(rep.getServicio().getIdServicio());
             
-            txFecha.setText(rep.getFechaReparacion().toString());
+            txFecha.setText(rep.getFechaReparacion().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             chkEstado.setSelected(rep.getEstado());
             if (rep.getEstado()) {
                 chkEstado.setText("Reparado");
